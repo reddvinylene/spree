@@ -1,11 +1,6 @@
 <%= error_messages_for :user %>
-<h1><%= t("new_user") %></h1>
-
+<h1><%= t :new_user %></h1>
 <% form_for(:user, :url => collection_url) do |f| %>
   <%= render :partial => "form", :locals => { :f => f } %>
-
-  <p class="form-buttons">
-    <%= button t("create") %> <%= link_to t('cancel'), collection_url %>
-  </p>
+  <div class="button"><%= button t(:create) %> <%= t :or %> <%= link_to t(:cancel), collection_url %></div>
 <% end %>
-
