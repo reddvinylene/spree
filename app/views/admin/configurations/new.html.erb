@@ -1,13 +1,10 @@
-<h2><%= t("new_configuration_template") %></h2>
-
+<h2><%= t :new_configuration_template %></h2>
 <%= error_messages_for :app_configuration %>
-
-<% form_for @app_configuration, :url => admin_configurations_path do |f| -%>
-  <p>
-    <strong><%= t("name") %></strong><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.submit t("create") %>
-<% end -%>
-
+<div class="form">
+  <div class="aligned">
+    <% form_for @app_configuration, :url => admin_configurations_path do |f| %>
+      <div class="text"><%= f.label t(:name) %><%= f.text_field t(:name) %></div>
+      <div class="button"><%= f.submit t(:create) %></div>
+    <% end %>
+  </div>
+</div>
