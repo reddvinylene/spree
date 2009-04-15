@@ -1,7 +1,3 @@
-<% content_for :sidebar do %>
-	<%= render :partial => "shared/taxonomies" %>
-<% end %>
-
-<%= render :partial => "shared/products.html.erb", :locals => {:products => @products, :taxon => @taxon } %>
-
-<%= page_links(:prev => "&#171; #{t('previous')}", :next => "#{t('next')} &#187;") if @search.page_count > 1 %>
+<%= render :partial => "shared/sidemenu" %>
+<%= render :partial => "shared/products", :locals => {:products => @products, :taxon => @taxon} %>
+<%= page_links(:prev => "#{t :previous}", :next => "#{t :next}") if @search.page_count > 1 %>

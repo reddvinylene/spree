@@ -1,24 +1,13 @@
-<% @body_id = 'product-details' %>
-
-<h1><%= @product.name %></h1>
-
-<div id="product-images">
-  <div id="main-image">
-		<%= render 'image' -%>
+<%= render :partial => "shared/sidemenu" %>
+<div class="product">
+  <h2><%= @product.name %></h2>
+  <div class="image">
+    <%= render "image" %>
   </div>
-  <div id="thumbnails">
-    <%= render 'thumbnails', :product => @product -%>
+  <p><%= product_description(@product) %></p>
+  <%= render "properties" %>
+  <%= render "cart_form" %>
+  <div class="thumbnails">
+    <%= render "thumbnails", :product => @product %>
   </div>
-</div>
-
-<div id="product-description">
-  <%= product_description(@product) %>
-
-  <%= render 'properties' %>
-</div>
-
-<div id="cart-form">
-
-<%= render 'cart_form' %>
-
 </div>
