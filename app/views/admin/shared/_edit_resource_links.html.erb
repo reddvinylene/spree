@@ -1,4 +1,1 @@
-<p class="form-buttons">
-  <button><span><%= t("update") %></span></button>
-  or <%= link_to t("cancel"), collection_url %>
-</p>
+<div class="button"><button><%= t :update %></button> <% t :or %> <%= link_to t(:cancel), collection_url %></div>

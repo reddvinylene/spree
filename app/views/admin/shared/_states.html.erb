@@ -1,15 +1,10 @@
-<p>
-  <%= label "#{presenter_type}_presenter", :address_state_name, t("state") %><br />
-
-	<% if @states.length == 0 %>
-			<%= text_field("#{presenter_type}_presenter", :address_state_name, :autocomplete => 'off') %>
-	<% else %>
-		<%= collection_select("#{presenter_type}_presenter", 
-		                      :address_state_id, 
-		                      @states, 
-		                      :id, 
-		                      :name, 
-		                      {:include_blank => true}, 
-		                      {:style=> 'width:150px;'}) %>
-	<% end %>
-</p>
+<%= label "#{presenter_type}_presenter", :address_state_name, t(:state) %>
+<% if @states.length == 0 %>
+  <div class="text">
+    <%= text_field("#{presenter_type}_presenter", :address_state_name, :autocomplete => "off") %>
+  </div>
+<% else %>
+  <div class="select">
+    <%= collection_select("#{presenter_type}_presenter", :address_state_id, @states, :id, :name, {:include_blank => true}) %>
+  </div>
+<% end %>
