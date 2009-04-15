@@ -1,27 +1,20 @@
-<h1><%= t("sales_totals") %> </h1>
-
-<table class="admin-report">
-  <tbody>
-    <tr>
-      <th scope="row"><%= t("item_total") %>:</th>
-      <td align="right"><%=number_to_currency @item_total%></td>
-    </tr>
-    <tr>
-      <th scope="row"><%= t("shipping_total") %>:</th>
-      <td align="right"><%=number_to_currency @ship_total%></td>
-    </tr>
-    <tr>
-      <th scope="row"><%= t("tax_total") %>:</th>
-      <td align="right"><%=number_to_currency @tax_total%></td>
-    </tr>
-    <tr>
-      <th scope="row"><%= t("sales_total") %>:</th>
-      <td align="right"><%=number_to_currency @sales_total%></td>
-    </tr>
-  </tbody>
+<h1><%= t :sales_totals %></h1>
+<table>
+  <tr>
+    <th><%= t :item_total %></th>
+    <td><%= number_to_currency @item_total %></td>
+  </tr>
+  <tr>
+    <th><%= t :shipping_total %></th>
+    <td><%= number_to_currency @ship_total %></td>
+  </tr>
+  <tr>
+    <th><%= t :tax_total %></th>
+    <td><%= number_to_currency @tax_total %></td>
+  </tr>
+  <tr>
+    <th><%= t :sales_total %></th>
+    <td><%= number_to_currency @sales_total %></td>
+  </tr>
 </table>
-
-<% content_for :sidebar do %>
-  <%= render :partial => 'admin/shared/report_criteria', :locals => {} %>
-<% end %>
-
+<%= render :partial => "admin/shared/report_criteria", :locals => {} %>
