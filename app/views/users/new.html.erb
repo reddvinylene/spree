@@ -1,18 +1,12 @@
 <%= error_messages_for :user %>
-
-<% @body_id = 'signup' %>
-
-<div id="new-customer">
-  <h2><%= t("new_customer") %></h2>
+<div class="new_customer">
+  <h2><%= t :new_customer %></h2>
   <% form_for(@user) do |f| %>
     <%= render :partial => "form", :locals => { :f => f } %>
-    <p>
-      <%= submit_tag t("create") %> 
-    </p>
+    <div class="button"><%= submit_tag t(:create) %></div>
   <% end %>
 </div>
-
-<div id="existing-customer">
-  <h2><%= t("existing_customer") %></h2>
-  <%= render :partial => 'shared/login' %>
+<div class="existing_customer">
+  <h2><%= t :existing_customer %></h2>
+  <%= render :partial => "shared/login" %>
 </div>

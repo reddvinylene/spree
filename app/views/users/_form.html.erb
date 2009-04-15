@@ -1,19 +1,15 @@
-<p>
-  <%= t("email") %>:<br />
-  <%= f.text_field :email  %>
+<div class="text">
+  <label><%= t :email %></label>
   <%= error_message_on :user, :email %>
-</p>
-
-
-<p>
-  <%= t("password") %>:<br />
-  <%= f.password_field :password  %>
-  <%= error_message_on :user, :password%>
-</p>
-
-<p>
-  <%= t("confirm") %>:<br />
+  <%= f.text_field :email %>
+</div>
+<div class="text">
+  <label><%= t :password %></label>
+  <%= error_message_on :user, :password %>
+  <%= f.password_field :password %>
+</div>
+<div class="text">
+  <label><%= t :confirm %></label>
   <%= f.password_field :password_confirmation %>
-</p>
-
+</div>
 <%= render_extra_partials f %>
