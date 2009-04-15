@@ -1,17 +1,12 @@
-<table class="index">
+<table>
   <tr>
-    <th><%= t("name") %></th>
-    <th></th>
+    <th><%= t :name %></th>
+    <th><%= t :options %></th>
   </tr>
-<% for taxonomy in @taxonomies %>
-  <tr>
-	<td>
-	  <%= taxonomy.name %>
-    </td>
-    <td class="actions">
-      <%= link_to_edit taxonomy.id %> &nbsp; <%= link_to_delete taxonomy %>
-    </td>
-  </tr>
-<% end %>
+  <% for taxonomy in @taxonomies %>
+    <tr>
+      <td><%= taxonomy.name %></td>
+      <td><%= link_to_edit taxonomy.id %> <%= link_to_delete taxonomy %></td>
+    </tr>
+  <% end %>
 </table>
-

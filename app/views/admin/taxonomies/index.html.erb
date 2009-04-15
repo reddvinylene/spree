@@ -1,17 +1,6 @@
-<%= render :partial => 'admin/shared/configuration_menu' %>
-<%= render :partial => "yui_head" %>
-
-<div class='toolbar'>
-  <ul class='actions'>
-    <li>
-      <%= button_link_to t("new_taxonomy"), new_admin_taxonomy_url, :icon => 'add' %></p>
-    </li>
-  </ul>
-  <br class='clear' />
-</div>
-
-<h1><%= t("taxonomies") %></h1>	
-
-<div id='list-taxonomies'>
-	<%= render :partial => 'list' %>
-</div>
+<%= render :partial => "admin/shared/configuration_menu" %>
+<ul class="options">
+  <li><%= button_link_to t(:new_taxonomy), new_admin_taxonomy_url %></li>
+</ul>
+<h1><%= t :taxonomies %></h1>
+<%= render :partial => "list" %>
