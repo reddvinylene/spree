@@ -1,12 +1,7 @@
-<%= render :partial => 'admin/shared/configuration_menu' %>
-
-<h1><%= t("editing_zone") %></h1>
-
+<%= render :partial => "admin/shared/configuration_menu" %>
+<h1><%= t :editing_zone %></h1>
 <%= error_messages_for :zone %>
-
 <% form_for(:zone, :url => object_url, :html => { :method => :put }) do |f| %>
   <%= render :partial => "form", :locals => { :f => f } %>
-  <p class="form-buttons">
-    <%= button t("update") %>
-  </p>
+  <div class="button"><%= button t(:update) %></div>
 <% end %>

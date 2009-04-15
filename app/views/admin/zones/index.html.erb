@@ -1,40 +1,23 @@
-<%= render :partial => 'admin/shared/configuration_menu' %>
-
-<div class='toolbar'>
-  <ul class='actions'>
-    <li>
-      <%= button_link_to t("new_zone"), new_object_url, :icon => 'add' %></p>
-    </li>
-  </ul>
-  <br class='clear' />
-</div>
-
-
-<h1><%= t("zones") %></h1>
-<table class="index">
-  <thead>
+<%= render :partial => "admin/shared/configuration_menu" %>
+<ul class="options">
+  <li><%= button_link_to t(:new_zone), new_object_url %></p></li>
+</ul>
+<h1><%= t :zones %></h1>
+<table>
+  <tr>
+    <th><%= order_by_link :name, :text => t(:name) %></th>
+    <th><%= order_by_link :description, :text => t(:description) %></th>
+    <th><%= t :options %></th>
+  </tr>
+  <% @collection.each do |zone| %>
     <tr>
-      <th><%= order_by_link :name, :text => t("name") %></th>
-      <th><%= order_by_link :description, :text => t("description") %></th>
-      <th></th>
+      <td><%= zone.name %></td>
+      <td><%= zone.description %></td>
+      <td>
+        <%= link_to_edit zone %>
+        <%= link_to_delete zone %>
+      </td>
     </tr>
-  </thead>
-  <tbody>
-    <% @collection.each do |zone| %>
-      <tr>
-        <td><%=zone.name %></td>
-        <td><%=zone.description %></td>
-        <td class="actions">
-          <%=link_to_edit zone %> &nbsp; 
-          <%=link_to_delete zone %>
-        </td>
-      </tr>
-    <% end %>
-    <% if @collection.empty? %>
-      <tr><td colspan="2">None.</td></tr>
-    <% end %>
-  </tbody>
+  <% end %>
 </table>
-
-<%= page_links(:prev => "&#171; #{t('previous')}", :next => "#{t('next')} &#187;") if @search.page_count > 1 %>
-
+<%= page_links(:prev => "#{t :previous}", :next => "#{t :next}") if @search.page_count > 1 %>

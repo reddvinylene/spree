@@ -1,53 +1,42 @@
-<script type='text/javascript'>
-  <%= render :partial => 'function.rjs' %>
+<script type="text/javascript">
+  <%= render :partial => "function.rjs" %>
 </script>
-
-<% f.field_container :name do %>
-  <%= f.label :name, t("name") %><br />
-  <%=f.text_field :name %></td>
-<% end %>
-
-<% f.field_container :description do %>
-  <%= f.label :description, t("description") %><br />
-  <%=f.text_field :description %>
-<% end %>
-
-<p>
-  <label><%= t("type") %></label><br />
-  <label class="sub"><input type="radio" 
-         name="type" <%=country_checked %> 
-         onclick="Element.show('country-based'); Element.hide('state-based'); Element.hide('zone-based');"
-         value="country" />
-       <%= t("country_based") %>
-  </label> &nbsp; 
-  <label class="sub"><input type="radio" 
-         name="type" <%=state_checked %> 
-         onclick="Element.show('state-based'); Element.hide('country-based'); Element.hide('zone-based');"
-         value="state" />
-       <%= t("state_based") %>
-  </label> &nbsp; 
-  <label class="sub"><input type="radio" 
-        name="type" <%=zone_checked %> 
-        onclick="Element.show('zone-based'); Element.hide('country-based'); Element.hide('state-based');"
-        value="zone" />
-      <%= t("zone_based") %>
+<div class="text">
+  <% f.field_container :name do %>
+    <%= f.label :name, t(:name) %>
+    <%=f.text_field :name %>
+  <% end %>
+</div>
+<div class="text">
+  <% f.field_container :description do %>
+    <%= f.label :description, t(:description) %>
+    <%=f.text_field :description %>
+  <% end %>
+</div>
+<div class="radio">
+  <label><%= t :type %></label>
+  <label>
+    <input type="radio" name="type" <%= country_checked %> onclick="Element.show('country_based'); Element.hide('state_based'); Element.hide('zone_based');" value="country" />
+    <%= t :country_based %>
   </label>
-</p>
-
-
+  <label>
+    <input type="radio" name="type" <%= state_checked %> onclick="Element.show('state_based'); Element.hide('country_based'); Element.hide('zone_based');" value="state" />
+    <%= t :state_based %>
+  </label>
+  <label>
+    <input type="radio" name="type" <%= zone_checked %> onclick="Element.show('zone_based'); Element.hide('country_based'); Element.hide('state_based');" value="zone" />
+    <%= t :zone_based %>
+  </label>
+</div>
 <% for name in %w(country state zone) %>
-<fieldset id="<%= name %>-based" <%= "style='display:none'" if send("#{name}_checked").blank? %> >
-  <legend><%= t(name) %></legend>
-  <ul id="<%= name %>-list" class="member-list">
-    <% @zone.members.each do |member| %>
-      <%= render :partial => name, :locals => {:value => member} %>
-    <% end %>
-    <%= render :partial => name if @zone.members.empty?%>
-  </ul>
-  <br/>
-  <%= button_link_to_function(t("add_#{name}"), "add_#{name}()", :icon => 'add' ) %> 
-</fieldset>
+  <fieldset id="<%= name %>_based" <%= "style='display: none'" if send("#{name}_checked").blank? %>>
+    <legend><%= t :name %></legend>
+    <ul id="<%= name %>_list">
+      <% @zone.members.each do |member| %>
+        <%= render :partial => name, :locals => {:value => member.name} %>
+      <% end %>
+      <%= render :partial => name if @zone.members.empty? %>
+    </ul>
+    <%= button_link_to_function(t(:"add_#{name}"), "add_#{name}()") %>
+  </fieldset>
 <% end %>
-
-
-
