@@ -1,10 +1,7 @@
 <%= render :partial => 'admin/shared/order_tabs', :locals => {:current => "Shipments"} %>
-
 <%= render :partial => "details" %>
-
 <%= error_messages_for :shipment_presenter %>
 <% form_for(:shipment_presenter, :url => object_url, :html => { :method => :put }) do |f| %>
-
   <div class="yui-g">
     <div class="yui-u first">
       <fieldset>
@@ -19,7 +16,6 @@
       </fieldset>
     </div>
   </div>
-
   <p class="form-buttons">
     <%= button t('update') %>
   </p>
