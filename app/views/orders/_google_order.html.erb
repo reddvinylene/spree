@@ -7,17 +7,17 @@
   pageTracker._initData();
   pageTracker._trackPageview();
   pageTracker._addTrans(
-  "<%= order.number %>",		//Order Number
-  "",		//Affiliation
-  "<%= order.total %>",		//Order total
-  "<%= order.tax_amount %>",		//Tax Amount
-  "<%= order.ship_amount %>",		//Ship Amount
-  "",		//City
-  "",		//State
-  ""		//Country
+  "<%= order.number %>", //Order Number
+  "", //Affiliation
+  "<%= order.total %>", //Order total
+  "<%= order.tax_amount %>", //Tax Amount
+  "<%= order.ship_amount %>", //Ship Amount
+  "", //City
+  "", //State
+  "" //Country
   );
   <% order.line_items.each do |line_item| -%>
-  pageTracker._addItem("<%= order.number %>", "<%= line_item.variant.sku %>", "<%= line_item.variant.product.name %>", 
+  pageTracker._addItem("<%= order.number %>", "<%= line_item.variant.sku %>", "<%= line_item.variant.product.name %>",
     "" /*Product Category*/, "<%= line_item.price %>", "<%= line_item.quantity %>");
   <% end -%>
   pageTracker._trackTrans();
