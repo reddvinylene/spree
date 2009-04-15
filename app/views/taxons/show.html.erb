@@ -1,11 +1,7 @@
 <h1><%= @taxon.name %></h1>
-
 <% if @taxon.children.empty? %>
-  <%= render :partial => "shared/products.html.erb", :locals => {:products => @products, :taxon => @taxon } %>
+  <%= render :partial => "shared/products", :locals => {:products => @products, :taxon => @taxon } %>
 <% else %>
   <%= render :partial => "taxon", :collection => @taxon.children %>
 <% end %>
-
-<% content_for :sidebar do %>
-	<%= render :partial => "shared/taxonomies" %>
-<% end %>
+<%= render :partial => "shared/taxonomies" %>
