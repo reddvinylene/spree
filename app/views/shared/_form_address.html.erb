@@ -1,57 +1,40 @@
-<div class="yui-g">
-  <label>Name</label>
-  <div class="yui-u sub-field first">
-    <%= f.text_field :address_firstname, :class => 'fullwidth' %><br />
-    <%= f.label :address_firstname, t('first_name') %>
-  </div>
-  <div class="yui-u sub-field">
-    <%= f.text_field :address_lastname, :class => 'fullwidth' %><br />
-    <%= f.label :address_lastname, t('last_name') %>
-  </div>
+<div class="text">
+  <%= f.text_field :address_first_name %>
+  <%= f.label :address_first_name, t(:first_name) %>
 </div>
-
-
-<p>
-  <label><%= t("address") %></label>
-  <div class="sub-field">
-    <%= f.label :address_address1, t("street_address") %><br />
-    <%= f.text_field :address_address1, :class => 'fullwidth' %>
-  </div>
-  <div class="sub-field">
-    <%= f.label :address_address2, t("street_address") %><br />
-    <%= f.text_field :address_address2, :class => 'fullwidth' %>
-  </div>
-</p>
-
-
-<div class="left sub-field">
-  <%= f.label :address_city, t("city") %><br />
-  <%= f.text_field :address_city, :size => 20 %>
+<div class="text">
+  <%= f.text_field :address_last_name %>
+  <%= f.label :address_last_name, t(:last_name) %>
 </div>
-<div class="right sub-field">
-  <%= f.label :address_zipcode, t("zip") %><br />
-  <%= f.text_field :address_zipcode, :size => 10 %>
+<div class="text">
+  <%= f.label :address_address1, t(:street_address) %>
+  <%= f.text_field :address_address1 %>
 </div>
-
-
-<div class="left sub-field" id="address_states_row">
-	<%= render :partial => "admin/shared/states", :locals => {:presenter_type => presenter_type} %>
+<div class="text">
+  <%= f.label :address_address2, t(:street_address2) %>
+  <%= f.text_field :address_address2 %>
 </div>
-<div class="right sub-field">
-  <%= f.label :address_country_id, t("country") %><br />
-	<%= f.collection_select :address_country_id, @countries, :id, :name, {}, {:style => 'width:150px;'} %>
+<div class="text">
+  <%= f.label :address_city, t(:city) %>
+  <%= f.text_field :address_city %>
 </div>
-
-<p>
-  <%= f.label :address_phone, t("phone") %><br />
+<div class="text">
+  <%= f.label :address_zipcode, t(:zip) %>
+  <%= f.text_field :address_zipcode %>
+</div>
+<%= render :partial => "admin/shared/states", :locals => {:presenter_type => presenter_type} %>
+<div class="select">
+  <%= f.label :address_country_id, t(:country) %>
+  <%= f.collection_select :address_country_id, @countries, :id, :name, {} %>
+</div>
+<div class="text">
+  <%= f.label :address_phone, t(:phone) %>
   <%= f.text_field :address_phone %>
-</p>
-
-
-<%= observe_field "#{presenter_type}_presenter_address_country_id", 
-  :url => {:action => :country_changed },
-	:update => 'address_states_row',
-	:on => "changed",
-		:with => "#{presenter_type}_presenter[address_country_id]",
-	:loading => "$('address_states_row').childElements()[1].update('Loading...');"
-%>       
+</div>
+<%= observe_field "#{presenter_type}_presenter_address_country_id",
+  :url => {:action => :country_changed},
+  :update => "address_states_row",
+  :on => "changed",
+  :with => "#{presenter_type}_presenter[address_country_id]",
+  :loading => "$('address_states_row').childElements()[1].update('Loading...');"
+%>

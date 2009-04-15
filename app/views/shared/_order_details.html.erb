@@ -1,36 +1,37 @@
-<table class="order-summary">
+<table>
   <tr>
-    <th><%= t('item_description') %></th>
-    <th><%= t('price') %></th>
-    <th><%= t('qty') %></th>
-    <th><%= t('total') %></th>
+    <th><%= t :item_description %></th>
+    <th><%= t :price %></th>
+    <th><%= t :qty %></th>
+    <th><%= t :total %></th>
   </tr>
   <% @order.line_items.each do |item| %>
-  <tr >
-    <td width="300"><%=item.variant.product.name-%> <%= "(" + variant_options(item.variant) + ")" unless item.variant .option_values.empty? %></td>
-    <td valign="top"><%= number_to_currency item.price -%></td>
-    <td valign="top"><%=item.quantity-%></td>
-    <td valign="top"><%= number_to_currency (item.price * item.quantity)-%></td>
-  </tr>
-  <% end %>      
-  <tr id="subtotal-row">
-    <td colspan="3"><b><%= t('subtotal') %>:</b></td>
-    <td><%= number_to_currency @order.item_total -%></td>
+    <tr >
+      <td><%= item.variant.product.name %> <%= "(" + variant_options(item.variant) + ")" unless item.variant .option_values.empty? %></td>
+      <td><%= number_to_currency item.price %></td>
+      <td><%= item.quantity %></td>
+      <td><%= number_to_currency (item.price * item.quantity) %></td>
+    </tr>
+  <% end %>
+  <tr>
+    <td><strong><%= t :subtotal %></strong></td>
+    <td><%= number_to_currency @order.item_total %></td>
   </tr>
   <tr>
-    <td colspan="3"><b><%= t('tax') %>:</b></td>
-    <td><span id="tax_amount"><%= number_to_currency @order.tax_amount -%></span></td>
+    <td><strong><%= t :tax %></strong></td>
+    <td><%= number_to_currency @order.tax_amount %></td>
   </tr>
   <tr>
-    <td colspan="3"><b><%= t('shipping') %>:</b> 
+    <td>
+      <strong><%= t :shipping %></strong>
       <% if @order.shipment && @order.shipment.shipping_method %>
-        <span id="ship_method">(<%= @order.shipment.shipping_method.name %>)</span>
+        <%= @order.shipment.shipping_method.name %>
       <% end %>
     </td>
-    <td><span id="ship_amount"><%= number_to_currency @order.ship_amount -%></span></td>
+    <td><%= number_to_currency @order.ship_amount %></td>
   </tr>
   <tr>
-    <td colspan="3"><b><%= t('order_total') %>:</b></td>
-    <td><span id="order_total"><%= number_to_currency @order.total -%></span></td>
+    <td><strong><%= t :order_total %></strong></td>
+    <td><%= number_to_currency @order.total %></td>
   </tr>
 </table>

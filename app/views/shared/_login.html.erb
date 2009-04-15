@@ -1,19 +1,10 @@
-<% form_tag user_session_path do  %>
-  <p>
-    <%= label :user_session, :email, t("email") %><br />
-    <%= text_field :user_session, 'email' %>
-  </p>
-  <p>
-    <%= label :user_session, :password, t("password") %><br />
-    <%= password_field :user_session, 'password' %>
-  </p>
-  <p>
-  	<label>
-      <%= check_box :user_session, :remember_me %>
-  	  <%= t ('remember_me') %>
-	  </label>
-	</p>
-
-  <p><%= submit_tag t("log_in") %></p>
-
+<% form_tag "/login" do %>
+  <div class="form">
+    <div class="aligned">
+      <div class="text"><label><%= t :email %></label><%= text_field_tag "email" %></div>
+      <div class="text short"><label><%= t :password %></label><%= password_field_tag "password" %></div>
+      <div class="button"><%= submit_tag t(:log_in) %></div>
+      <div class="extra"><p><%= link_to t(:forgot_email_or_password), new_password_reset_path %></p></div>
+    </div>
+  </div>
 <% end %>

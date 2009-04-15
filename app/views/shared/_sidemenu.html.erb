@@ -1,0 +1,10 @@
+<div id="sidemenu">
+  <% @taxonomies.each do |taxonomy| %>
+    <h4><%= t :shop_by %> <%= taxonomy.name.singularize %></h4>
+    <ul>
+      <% taxonomy.root.children.each do |taxon| %>
+        <li><%= link_to taxon.name, seo_url(taxon) %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
