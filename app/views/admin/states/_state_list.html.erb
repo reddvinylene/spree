@@ -1,28 +1,18 @@
-<table class="index">
-  <thead>
+<table>
+  <tr>
+    <th><%= t :name %></th>
+    <th><%= t :abbreviation %></th>
+    <th><%= t :options %></th>
+  </tr>
+  <% @states.each do |state| %>
     <tr>
-      <th><%= t("name") %></th>
-      <th><%= t("abbreviation") %></th>
-      <th></th>
+      <td><%= state.name %></td>
+      <td><%= state.abbr %></td>
+      <td>
+        <%= link_to t(:edit), edit_admin_country_state_url(@country, state) %>
+        <%= link_to t(:delete), object_url(state), :method => :delete %>
+      </td>
     </tr>
-  </thead>
-  <tbody>
-    <% @states.each do |state| %>
-      <tr>
-        <td><%=state.name %></td>
-        <td><%=state.abbr %></td>
-        <td class="actions">
-          <%=link_to_with_icon 'edit', t("edit"), edit_admin_country_state_url(@country, state) %> &nbsp;
-          <%=link_to_with_icon 'delete', t("delete"), object_url(state), :method => :delete %>
-        </td>
-      </tr>
-    <% end %>
-    <% if @states.empty? %>
-      <tr><td colspan="3">None.</td></tr>
-    <% end %>
-  </tbody>
+  <% end %>
 </table>
-
-<p>
-  <%= button_link_to t("new_state"), new_admin_country_state_url(@country), :icon => 'add' %>
-</p>
+<div class="button"><%= button_link_to t(:new_state), new_admin_country_state_url(@country) %></div>
