@@ -1,34 +1,17 @@
-<%= render :partial => 'admin/shared/order_tabs', :locals => {:current => "Payments"} %>
-
-<h2><%= t("new_credit_card_payment")%></h2>
-
-<% form_for(:payment_presenter, :url => admin_order_creditcard_payments_url(@order)) do |f| %>
-
-<%=error_messages_for :payment_presenter %>
-
-<div class="yui-g">
-  <div class="yui-u first">
-
-
-    <%= render :partial => 'form', :locals => {:f => f} %>
-
-  </div>
-  <div class="yui-u">
-    
-    <fieldset>
-		<h4><%= t('billing_address')%></h4>
-		<%= render :partial => 'shared/form_address', :locals => {:f => f, :presenter_type => "payment"} %>
-
-		<p>
-		  <label for="ammount"><%= t("order_total_message") %></label><br />
-		  <input type="text" name="amount" id="amount" value="<%= @amount %>">
-		</p>
-		</fieldset>
-		
+<%= render :partial => "admin/shared/order_tabs", :locals => {:current => "payments"} %>
+<h2><%= t :new_credit_card_payment %></h2>
+<div class="form">
+  <div class="aligned">
+    <% form_for(:payment_presenter, :url => admin_order_creditcard_payments_url(@order)) do |f| %>
+      <%= error_messages_for :payment_presenter %>
+      <%= render :partial => "form", :locals => {:f => f} %>
+      <h4><%= t :billing_address %></h4>
+      <%= render :partial => "shared/form_address", :locals => {:f => f, :presenter_type => "payment"} %>
+      <div class="text">
+        <label for="amount"><%= t :order_total_message %></label>
+        <input type="text" name="amount" id="amount" value="<%= @amount %>">
+      </div>
+      <div class="button"><%= button t(:continue) %> <%= t :or %> <%= link_to t(:actions.cancel), admin_order_payments_url(@order) %></div>
+    <% end %>
   </div>
 </div>
-<p class="form-buttons">
-  <%= button t('continue') %>
-  or <%= link_to t("actions.cancel"), admin_order_payments_url(@order) %>
-</p>
-<% end %>
